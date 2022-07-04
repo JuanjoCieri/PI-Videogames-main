@@ -1,0 +1,12 @@
+.box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    /* overflow: hidden; */
+    /* position: fixed; */
+}

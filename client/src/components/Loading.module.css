@@ -1,0 +1,8 @@
+.tittle {
+    font-size: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}

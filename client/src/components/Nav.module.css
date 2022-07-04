@@ -1,0 +1,47 @@
+.glass {
+    background-color: rgba(0,0,0,0.1);
+    border: 2px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 20px 5px rgba(0,0,0,0.3);
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100%;
+}
+
+.content ul{
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.content ul h4 {
+    margin: 4rem 10px;
+    color: white;
+    font-size: 1rem;
+}
+
+.content h2 {
+    color: rgb(138, 19, 19);
+    filter: drop-shadow(4px 6px 12px black);
+    font-size: 1.8rem;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content ul li a{
+    color: rgba(255,255,255,0.8);
+    display: block;
+    text-decoration: none;
+    padding: 20px 10px;
+    transition: background-color 1s, color 1s, box-shadow 1s, border-radius 1s;
+  }
+
+.content ul li a:hover {
+    background-color: rgba(0,0,0,0.2);
+    color:rgb(146, 38, 38);
+}

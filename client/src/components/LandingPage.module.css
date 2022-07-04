@@ -1,0 +1,68 @@
+.landingCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("https://www.megaidea.net/wp-content/uploads/2021/07/fondo-gt5-d-1024x576.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    backdrop-filter: blur(3px);
+    overflow: hidden;
+}
+
+.landing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.tittle {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    font-family: 'Bebas Neue', cursive;
+    color: white;
+    font-size: 280px;
+    /* opacity: 85%;  */
+    padding: 50px;
+    padding-bottom: 10rem;
+    filter: drop-shadow(4px 6px 12px black);
+} 
+
+.chop {
+    width: 470px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding-top: 15rem;
+    opacity: 90%;
+}
+
+.button {
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    top: 80px;
+    left: 20rem;
+    cursor: pointer;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 62px;
+    background: none;
+    border: none;
+    color: #A10035;
+    filter: drop-shadow(4px 6px 6px black);
+}
+
+
+
+
+
+
+
+
+
