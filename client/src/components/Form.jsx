@@ -10,6 +10,10 @@ export default function Form () {
     const dispatch = useDispatch()
 
     const genres = useSelector((state) => state.genres)
+    
+    const [errorsForm, setErrorsForm] = useState({})
+
+    const [errorsBtn, setErrorsBtn] = useState(Object.keys(errorsForm).length < 1 ? false : true)
 
     const [game, setGame] = useState({
         name: "",
@@ -40,42 +44,42 @@ export default function Form () {
         })
     }
 
-    // function validate (game) {
-    //     let errors = {};
+     function validate (game) {
+        let errors = {};
         
-    //     if (!game.name) {
-    //         errors.name = "Name is required!"
-    //     } else if (!/^[a-zA-Z0-9-() .]+$/.test(game.name)){
-    //         errors.name = "Only accepts letters, numbers, mid dashes and parenthesis!"
-    //     }
+        if (!game.name) {
+            errors.name = "Name is required!"
+        } else if (!/^[a-zA-Z0-9-() .]+$/.test(game.name)){
+            errors.name = "Only accepts letters, numbers, mid dashes and parenthesis!"
+        }
 
-    //     if (game.image.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.image)) {
-    //         errors.image = "Invalid URL!"
-    //     }
+        if (game.image.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(game.image)) {
+            errors.image = "Invalid URL!"
+        }
 
-    //     if (!game.released) {
-    //         errors.released = "Released date is required!"
-    //     }
+        if (!game.released) {
+            errors.released = "Released date is required!"
+        }
 
-    //     if (!game.description) {
-    //         errors.description = "Description is required!"
-    //     }
+        if (!game.description) {
+            errors.description = "Description is required!"
+        }
 
-    //     if (!game.rating) {
-    //         errors.rating = "Rating is required"
-    //     } else if (game.rating > 5) {
-    //         errors.rating = "Rating must be less than 5"
-    //     } else if (game.rating < 0) {
-    //         errors.rating = "Rating cannot be negative"
-    //     }
+        if (!game.rating) {
+            errors.rating = "Rating is required"
+        } else if (game.rating > 5) {
+            errors.rating = "Rating must be less than 5"
+        } else if (game.rating < 0) {
+            errors.rating = "Rating cannot be negative"
+        }
 
-    //     return errors
-    // }
+        return errors
+    }
 
-    // const [errors, setErrors] = useState({})
 
     async function handleSubmit (e) {
         e.preventDefault()
+        setErrorsForm(validate(game))
             await axios.post("http://localhost:3001/videogames", game);
             setGame({
               name: "",
@@ -92,10 +96,12 @@ export default function Form () {
 
     function handleChange (e) {
         e.preventDefault()
+        setErrorsForm(validate(game))
         setGame({
             ...game,
             [e.target.name]: e.target.value
         })
+        console.log(game)
     }
 
     return (
@@ -108,14 +114,19 @@ export default function Form () {
                     <div className={styles.form}>
                         <label>Name</label>
                         <input type="text" placeholder="Enter a name..." name="name" value={game.name} onChange={handleChange}></input>
+                        {errorsForm.name ? <h4><small>{errorsForm.name}</small></h4> : false}
                         <label>Description</label>
                         <textarea name="description" placeholder="Enter a description..." value={game.description} onChange={handleChange}></textarea>
+                        {errorsForm.description ? <h4><small>{errorsForm.description}</small></h4> : false}
                         <label>Released</label>
                         <input type="date" name="released" placeholder='yyyy-mm-dd' value={game.released} onChange={handleChange}></input>
+                        {errorsForm.released ? <h4><small>{errorsForm.released}</small></h4> : false}
                         <label>Image</label>
                         <input type="text" placeholder="Enter a URL" name="image" value={game.image} onChange={handleChange}></input>
+                        {errorsForm.image ? <h4><small>{errorsForm.image}</small></h4> : false}
                         <label>Rating</label>
                         <input name="rating" placeholder="Enter a rating 0 - 5" value={game.rating} onChange={handleChange}></input>
+                        {errorsForm.rating ? <h4><small>{errorsForm.rating}</small></h4> : false}
                         <label>Genres</label>
                         <select name="genres" value={game.genres} onChange={e => handleGenres(e)}>
                             {genres.map((g) => (
@@ -130,7 +141,7 @@ export default function Form () {
                             <option value={4}>XBOX</option>
                             <option value={5}>iOS</option>
                         </select>
-                        <button type="submit">
+                        <button type="submit" disabled={errorsBtn}>
                             CREATE
                         </button>
                     </div>

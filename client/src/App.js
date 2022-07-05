@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Form from './components/Form'
 import Details from './components/Details'
-import LoadingPage from './components/Loading';
+import Error from './components/Error';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route exact path={'/home'} component={Home}></Route>
           <Route exact path={'/form'} component={Form}></Route>
           <Route exact path={'/home/:id'} component={Details}></Route>
+          <Route path={'*'} component={Error} />
         </Switch>
       </div>
      </BrowserRouter> 

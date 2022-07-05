@@ -99,27 +99,33 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 allGames: sort2
             }
-        case "BY_GENRES_FILTER":
-            let aux = [];
-            if (action.payload) {
-                aux = state.videogame.filter((e) => {
-                    if (e.genres.length === 0) {
-                        return e.genres
-                    }
-                    else if (e.genres.some((e) => e.name === action.payload)) {
-                        return e.genres.map(el => el.name)
-                    }
-                    else {
-                        return e.genres.includes(action.payload)
-                    }
-                })
-            } else {
-                aux = state.videogame
-            }
-            return {
-                ...state,
-                allGames: aux,
-            }
+        case "FILTER_BY_GENRE":
+            return {...state, filtered: state.allGames.filter((game) => {
+                return game.genres.find((genre) => {
+                    return genre === action.payload})
+            })
+        }
+        // case "BY_GENRES_FILTER":
+        //     let aux = [];
+        //     if (action.payload) {
+        //         aux = state.videogame.filter((e) => {
+        //             if (e.genres.length === 0) {
+        //                 return e.genres
+        //             }
+        //             else if (e.genres.some((e) => e.name === action.payload)) {
+        //                 return e.genres.map(el => el.name)
+        //             }
+        //             else {
+        //                 return e.genres.includes(action.payload)
+        //             }
+        //         })
+        //     } else {
+        //         aux = state.videogame
+        //     }
+        //     return {
+        //         ...state,
+        //         allGames: aux,
+        //     }
         default: 
             return state;
     }

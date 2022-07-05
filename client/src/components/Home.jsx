@@ -13,6 +13,7 @@ export default function Home() {
 
     const dispatch = useDispatch()
     const gamesState = useSelector((state) => state.allGames)
+    const genres = useSelector((state) => state.genres)
     const [order, setOrder] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
     const [gamesPage, setGamePage] = useState(15)
@@ -52,11 +53,12 @@ export default function Home() {
         setOrder(`Order ${e.target.value}`)
     }
 
-    // function handleSortGenres (e) {
-    //     e.preventDefault()
-    //     dispatch(byGenresFilter(e.target.value))
-    //     setCurrentPage(1)
-    // }
+    function handleSortGenres (e) {
+        e.preventDefault()
+        dispatch(byGenresFilter(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Order ${e.target.value}`)
+    }
 
     return (
         <div className={styles.home}>
@@ -79,6 +81,11 @@ export default function Home() {
                     <option value="All">All</option>
                     <option value="created">Created</option>
                     <option value="api">Api</option>
+                </select>
+                <select onChange={e => handleSortGenres(e)}>
+                    {genres.map((g) => (
+                        <option value={g.name}>{g.name}</option>
+                    ))}
                 </select>
             </div>
             <div className={styles.cards}>

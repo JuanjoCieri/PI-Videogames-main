@@ -2,18 +2,14 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
-}
-.cont {
-    display: flex;
     flex-direction: center;
-    width: 25rem;
-    padding-top: 5rem;
 }
 
-.nav {
-    /* display: flex; */
-    /* height: 100%; */
-    /* position: fixed; */
+.cont {
+    display: flex;
+    justify-content: center;
+    /* width: 25rem; */
+    padding-top: 6rem;
 }
 
 .formCont {
@@ -25,11 +21,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* border: 1px black solid; */
-    /* width: 25rem; */
     gap: 1rem;
-    
 }
 
 
